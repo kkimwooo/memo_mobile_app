@@ -33,6 +33,7 @@ dev_dependencies:
   json_serializable: ^6.5.4
   freezed: ^2.2.1
   build_runner: ^2.3.2
+  sqflite_common_ffi: ^2.2.0+1
 
 
 flutter:

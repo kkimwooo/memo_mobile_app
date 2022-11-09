@@ -1,10 +1,10 @@
-import 'package:memo_mobile_app/data/data_source/note_db.dart';
+import 'package:memo_mobile_app/data/data_source/note_db_helper.dart';
 import 'package:memo_mobile_app/domain/model/note.dart';
 import 'package:memo_mobile_app/domain/repository/note_repository.dart';
 
 //domain Layter의 repository를 구현
 class NoteRepositoryImple implements NoteRepository {
-  final NoteDb db;
+  final NoteDbHelper db;
 
   NoteRepositoryImple(this.db);
 
