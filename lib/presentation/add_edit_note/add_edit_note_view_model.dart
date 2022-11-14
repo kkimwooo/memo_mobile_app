@@ -33,7 +33,7 @@ class AddEditNoteViewModel with ChangeNotifier {
         timeStamp: DateTime.now().millisecondsSinceEpoch,
       ));
     } else {
-      await repository.insertNote(Note(
+      await repository.updateNote(Note(
         id: id,
         title: title,
         content: content,
