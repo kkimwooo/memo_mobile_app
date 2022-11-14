@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:memo_mobile_app/domain/model/note.dart';
 import 'package:memo_mobile_app/domain/repository/note_repository.dart';
 import 'package:memo_mobile_app/presentation/notes/notes_event.dart';
+import 'package:memo_mobile_app/presentation/notes/notes_state.dart';
 
 //화면에서 일어나는 모든 일을 ViewModel에서 처리
 class NoteViewModel with ChangeNotifier {
-  NoteRepository repository;
+  final NoteRepository repository;
 
-  List<Note> _notes = [];
-  //외부에서 수정이 불가한 읽기 전용 리스트
-  UnmodifiableListView<Note> get notes => UnmodifiableListView(_notes);
+  NotesState _state = NotesState(notes: []);
+  NotesState get state => _state;
 
   Note? _recentlyDeletedNote;
 
@@ -27,7 +27,7 @@ class NoteViewModel with ChangeNotifier {
 
   Future<void> _loadNotes() async {
     List<Note> notes = await repository.getNotes();
-    _notes = notes;
+    _state = _state.copyWith(notes: notes);
     //변화 전달을 위해 NotifyListner 사용
     notifyListeners();
   }
